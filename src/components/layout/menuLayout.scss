@@ -1,0 +1,26 @@
+$main-with:100%;
+.page{
+    display: -webkit-box;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column; 
+    height: 100vh;
+    // padding-left: 2em;
+    // padding-right: 2em;
+}
+.header{
+    width:$main-with;
+    background-color: rgba(34,84,126,0.9);
+    line-height: 2rem;
+}
+.content{
+    -webkit-box-flex: 1;
+    flex:1;
+    width:$main-with;
+    // background-color: lightyellow;
+    overflow-y: auto;
+}
+.footer{
+    width: $main-with;
+    background-color: goldenrod;
+}

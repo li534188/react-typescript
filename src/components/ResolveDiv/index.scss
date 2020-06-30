@@ -1,0 +1,85 @@
+@import './testInport';
+
+// 默认将输出webkit前缀，moz前缀和标准
+@mixin prefixer($property, $value, $prefixes: webkit moz) {
+    #{$property}: $value;
+   
+    @each $prefix in $prefixes {
+      @if $prefix == webkit {
+        -webkit-#{$property}:#{$value};
+      }
+      @else if $prefix == moz {
+        -moz-#{$property}:#{$value};
+      }
+      @else if $prefix == o {
+        -o-#{$property}:#{$value};
+      }
+      @else if $prefix == ms {
+        -ms-#{$property}:#{$value};
+      }
+    }
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+
+.parent{
+    @include prefixer(display, flex, webkit moz o ms);
+    @include prefixer(flex-direction, row, webkit moz o ms);
+    @include prefixer(flex-wrap, wrap, webkit moz o ms);
+    // @include prefixer(animation, move 3s linear, webkit moz o ms);
+}
+.parent_card{
+    border:3px solid rgb(20, 154, 216);
+    height: 7rem;
+    margin-left: 3em;
+    margin-top: 1em;
+    text-align: center;
+    flex: 0 0 10%;
+    
+    // @include prefixer(animation, move 2s linear, webkit moz o ms);
+}
+.parent_card:hover{
+    border:3px solid $back;
+    // height: 7.2rem;
+    width: 5rem;
+    margin-left: 3em;
+    margin-top: 1em;
+    text-align: center;
+    flex: 0 0 10%;
+    // box-shadow: 0px -10px 10px rgba(0,0,0,0.9), 0px 10px 10px rgba(0,0,0,0.9), 10px 0px 10px rgba(0,0,0,0.9), 0px 10px 10px rgba(0,0,0,0.9)/*阴影出现在元素上方*/ 
+    
+}
+
+@include keyframes(move) {
+    0% {  transform:rotateX(0) translateX(300px);}
+    // 50% { transform:rotate(240deg);}
+    100% {  transform:rotateX(320deg) translateX(50px);}
+}
+
+//测试下继承
+.error {
+  border: 1px solid red;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+// 自定义bootstrap螺纹表格样式
+.table-striped-warner > tbody > tr:nth-of-type(odd) {
+  background-color: #cbc8c7;
+}
