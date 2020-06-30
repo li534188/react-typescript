@@ -66,3 +66,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 make a react project by typescript ,like redux
 
 # 学习react typescript 相关内容
+1.首先一个在src目录下创建一个types文件夹
